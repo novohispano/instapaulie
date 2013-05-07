@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
   def index
-    @user ||= Instagram.user_search(params[:user]).first
+    query = params[:user] || 'mexicancurious'
+
+    @user ||= Instagram.user_search(query).first
     if @user == nil
       flash[:notice] = "The user doesn't exist"
     else
