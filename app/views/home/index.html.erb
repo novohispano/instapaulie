@@ -1,3 +1,22 @@
- <% @instagram.each do |instagram| %>
- <%= image_tag instagram.images.standard_resolution.url %>
- <% end %>
+<div class='container'>
+  <div class='span10'>
+    <div class='head'>
+      <h1>Instapaulie.</h1>
+      <p>Find photos from Instagram users.</p>
+      <form class="form-inline">
+        <%= form_tag do %>
+          <%= text_field_tag(:user) %>
+          <%= submit_tag("Submit", class: "btn btn-primary span2") %>
+        <% end %>
+      </form>
+    </div>
+
+  <% if @instagram == nil %>
+    <h3 class="head">Enter a valid user.</h3>
+  <% else %>
+    <% @instagram.each do |instagram| %>
+      <%= image_tag instagram.images.standard_resolution.url, class: "img-polaroid span3" %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
